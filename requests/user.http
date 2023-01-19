@@ -1,0 +1,15 @@
+###User Profile
+Get http://localhost:4500/user/profile
+Content-Type: application/json
+Authorization: Bearer {{$dotenv token}}
+
+###Update User Profile
+Post http://localhost:4500/user/editeProfile
+Content-Type: application/json
+Authorization: Bearer {{$dotenv token}}
+
+{
+    "username": "zeinabDastjerdi22",
+    "email": "dastjerdi@gmail.com",
+    "mobile": "09964315286"
+}
