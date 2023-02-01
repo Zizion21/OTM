@@ -1,10 +1,8 @@
 1. TestModel: An array included questions IDs? 
    Consider multiple questions!
 
-2. Courses categories?
+2. Courses categories? courses
 
 3. Authorization details. (email, mobile(OTP, SMS))
 
 4. Test owner's accessibilities.
-
-hey there
