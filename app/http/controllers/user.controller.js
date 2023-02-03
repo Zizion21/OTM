@@ -8,12 +8,14 @@ class UserController{
             return res.status(200).json({
                 status: 200,
                 success: true,
-                userInfo: {
-                    "Username" : user.username,
-                    "Email": user.email,
-                    "Mobile Number": user.mobile,
-                    "Role": user.role
-                }
+                userInfo: user
+                // {
+                //     "Username" : user.username,
+                //     "Email": user.email,
+                //     "Mobile Number": user.mobile,
+                //     "Role": user.role,
+                //     "tests": user.tests
+                // }
             })
             
         } catch (error) {
@@ -39,7 +41,7 @@ class UserController{
                     success: true,
                     message: "Profile successfuly updated."
                 })
-            } throw{ status: 400, message: "Update failed. Please try again."}
+            } throw {status: 400, message: "Update failed. Please try again."}
 
             
         } catch (error) {
@@ -47,8 +49,11 @@ class UserController{
         }
 
     }
+
     userTests(req, res, next){
         try {
+            const user= req.user;
+            return res.json(user.tests)
             
         } catch (error) {
             next(error)

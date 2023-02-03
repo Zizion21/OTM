@@ -1,0 +1,14 @@
+###Create Tests
+Post http://localhost:4500/test/create
+Content-Type: application/json
+Authorization: Bearer {{$dotenv token}}
+
+{
+    "title": "second test",
+    "introduction": "this is the first exam",
+    "questions": {
+        "questionText": "question1",
+        "answerOptions": ["a", "b", "c"],
+        "correctAnswer": "d"
+    }
+}

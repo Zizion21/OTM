@@ -4,7 +4,7 @@ Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}
 
 ###Update User Profile
-Post http://localhost:4500/user/editeProfile
+Post http://localhost:4500/user/editProfile
 Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}
 
@@ -13,3 +13,8 @@ Authorization: Bearer {{$dotenv token}}
     "email": "dastjerdi@gmail.com",
     "mobile": "09964315286"
 }
+
+###User's Tests
+Get http://localhost:4500/user/tests
+Content-Type: application/json
+Authorization: Bearer {{$dotenv token}}

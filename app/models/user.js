@@ -6,7 +6,8 @@ const UserSchema= new mongoose.Schema({
     mobile: {type: String, uniqe: true},
     role: {type: [String], default: ["USER"]},
     profile_image: {type: String},
-    token: {type: String, default: ""}
+    token: {type: String, default: ""},
+    tests: {type: [String], default: []}
 },{
     timestamps: true
 })
