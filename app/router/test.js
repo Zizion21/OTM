@@ -1,11 +1,12 @@
 const { TestContrller } = require("../http/controllers/test.controller");
+const { checkLogin } = require("../http/middlewares/autoLogin");
 
 const router=require("express").Router();
 
-router.get("/showResults");
-router.post("/create", TestContrller.createTest);
-router.post("/edit");
-router.post("/delete");
+router.get("/showResults",checkLogin, TestContrller.showTestResult);
+router.post("/create",checkLogin, TestContrller.createTest);
+router.post("/edit/:id",checkLogin, TestContrller.editTestById);
+router.post("/delete/:id",checkLogin, TestContrller.deleteTestById);
 
 module.exports={
     testRoutes: router

@@ -4,11 +4,30 @@ Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}
 
 {
-    "title": "second test",
-    "introduction": "this is the first exam",
+    "title": "5th Test",
+    "introduction": "this is the fifth exam",
+    "questions": {
+        "questionText": "question5",
+        "answerOptions": ["a", "b", "c"],
+        "correctAnswer": "d"
+    }
+}
+
+###Delete a Test by ID
+Post http://localhost:4500/test/delete/63dced5e2b4c2bf56ad26b04
+Content-Type: application/json
+Authorization: Bearer {{$dotenv token}}
+
+###Edit a Test by ID
+Post http://localhost:4500/test/edit/63dced5e2b4c2bf56ad26b04
+Content-Type: application/json
+Authorization: Bearer {{$dotenv token}}
+
+{
     "questions": {
         "questionText": "question1",
         "answerOptions": ["a", "b", "c"],
         "correctAnswer": "d"
     }
+
 }
