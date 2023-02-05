@@ -15,7 +15,6 @@ class TestContrller {
             })       
         } catch (error) {
             next(error)
-            
         }
     }
 

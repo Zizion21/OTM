@@ -4,10 +4,10 @@ Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}
 
 {
-    "title": "5th Test",
-    "introduction": "this is the fifth exam",
+    "title": "zizion's second test.",
+    "introduction": "this is the second exam that zizion is creating",
     "questions": {
-        "questionText": "question5",
+        "questionText": "Question no.2",
         "answerOptions": ["a", "b", "c"],
         "correctAnswer": "d"
     }

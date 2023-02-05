@@ -1,3 +1,4 @@
+const { TestModel } = require("../../models/test");
 const { UserModel } = require("../../models/user");
 
 class UserController{
@@ -50,10 +51,12 @@ class UserController{
 
     }
 
-    userTests(req, res, next){
+    async userTests(req, res, next){
         try {
-            const user= req.user;
-            return res.json(user.tests)
+            const owner= req.user._id;
+            const test= await TestModel.find({owner})
+            if(!test) throw{status: 201, message: "You have no test yet."}
+            return res.json(test)
             
         } catch (error) {
             next(error)

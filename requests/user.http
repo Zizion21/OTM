@@ -9,8 +9,8 @@ Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}
 
 {
-    "username": "zeinabDastjerdi22",
-    "email": "dastjerdi@gmail.com",
+    "username": "zeinabdastjerdi22",
+    "email": "zizdastjerdi@gmail.com",
     "mobile": "09964315286"
 }
 

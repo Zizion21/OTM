@@ -3,11 +3,11 @@ Post http://localhost:4500/auth/register
 Content-Type: application/json
 
 {
-    "username" : "ziz799",
+    "username" : "zizion_",
     "password" : "13791379",
     "confirm_password" : "13791379",
-    "email" : "ziz979@gmail.com",
-    "mobile" : "09337472216"
+    "email" : "zeinabjafari9999@gmail.com",
+    "mobile" : "09944317629"
 }
 
 ###login
@@ -16,6 +16,6 @@ Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}
 
 {
-    "username" : "ziz",
+    "username" : "zizion_",
     "password" : "13791379"
 }
