@@ -19,15 +19,23 @@ Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}
 
 ###Edit a Test by ID
-Post http://localhost:4500/test/edit/63dced5e2b4c2bf56ad26b04
+Post http://localhost:4500/test/edit/63df80a15d8bea18c85a1be5
 Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}
 
 {
+    "title": "zizion's third test",
+    "introduction": "",
     "questions": {
         "questionText": "question1",
         "answerOptions": ["a", "b", "c"],
         "correctAnswer": "d"
-    }
+    },
+    "public": "false"
 
 }
+
+###Show a Test by ID
+Get http://localhost:4500/test/63df80a15d8bea18c85a1be5
+Content-Type: application/json
+Authorization: Bearer {{$dotenv token}}

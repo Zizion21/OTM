@@ -7,6 +7,7 @@ router.get("/showResults",checkLogin, TestContrller.showTestResult);
 router.post("/create",checkLogin, TestContrller.createTest);
 router.post("/edit/:id",checkLogin, TestContrller.editTestById);
 router.post("/delete/:id",checkLogin, TestContrller.deleteTestById);
+router.get("/:id", checkLogin, TestContrller.showATestById);
 
 module.exports={
     testRoutes: router

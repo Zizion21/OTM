@@ -11,6 +11,7 @@ const TestSchema= new mongoose.Schema({
     introduction:{type: String, default: ""},
     questions:{type: [QuestionSchema]},
     link: {type: String},
+    public: {type: Boolean, default: true},
     owner: {type: mongoose.Types.ObjectId, required: true},
     attendees: {type: [mongoose.Types.ObjectId], default: []}
 },{
