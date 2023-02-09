@@ -24,15 +24,14 @@ class TestContrller {
             const testID= req.params.id;
             const test= await TestModel.findOne({owner, _id: testID})
             if(!test) throw {status: 404, message: "You cannot access this test to edit."}
-            // return res.send("OKAY")
-            const attendees= test.attendees;
-            if(!attendees.length == 0) throw{status:201, message: "Cannot edit a test after it's given."}
-            const data= {...req.body};
+            if(test.attendees.length !== 0) throw{status:201, message: "Cannot edit a test after it's given."}
 
+            const data= {...req.body};
             Object.entries(data).forEach(([key, value])=>{
                 if(!["title", "introduction", "public"].includes(key)) delete data[key];
                 if(["", " ", 0, null, undefined, NaN].includes(value)) delete data[key];
             })
+
             const updateResult= await TestModel.updateOne({_id: testID}, {$set: data});
             if(updateResult.modifiedCount == 0) throw {status: 400, message: "Update failed. Please try again."};
             return res.status(200).json({
@@ -73,13 +72,16 @@ class TestContrller {
             // console.log(""+ownerID);
             // console.log(""+test.owner);
             if(test.public== false){
-                if(""+test.owner== ""+ownerID) return res.json(test)
-
-            } throw{status: 401, message: "This is a private test."}
+                if(""+test.owner!== ""+ownerID) throw{status: 401, message: "This is a private test."}
+            } return res.json(test);
             
         } catch (error) {
             next(error)
         }
+    }
+
+    async deleteQuestionsById(req, res, next){
+        
     }
 
     async showTestResult(req, res, next){

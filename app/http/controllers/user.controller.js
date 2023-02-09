@@ -34,7 +34,9 @@ class UserController{
                 if(!fields.includes(key)) delete data[key]
                 if(badValues.includes(value)) delete data[key];
             })
-            // console.log(data);
+            const username=data.username;
+            const usernameCheck= await UserModel.findOne({username});
+            if(usernameCheck) throw{status:400, message: "Username already exists."}
             const result= await UserModel.updateOne({_id: userID}, {$set: data});
             if(result.modifiedCount> 0){
                 return res.status(200).json({

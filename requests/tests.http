@@ -13,18 +13,13 @@ Authorization: Bearer {{$dotenv token}}
     }
 }
 
-###Delete a Test by ID
-Post http://localhost:4500/test/delete/63dced5e2b4c2bf56ad26b04
-Content-Type: application/json
-Authorization: Bearer {{$dotenv token}}
-
 ###Edit a Test by ID
 Post http://localhost:4500/test/edit/63df80a15d8bea18c85a1be5
 Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}
 
 {
-    "title": "zizion's third test",
+    "title": "zizion's 3rd test",
     "introduction": "",
     "questions": {
         "questionText": "question1",
@@ -35,7 +30,17 @@ Authorization: Bearer {{$dotenv token}}
 
 }
 
+###Delete a Test by ID
+Delete http://localhost:4500/test/delete/63df82370707a1889f726c2b
+Content-Type: application/json
+Authorization: Bearer {{$dotenv token}}
+
+###Delete a question by ID
+Delete http://localhost:4500/test/deletedeleteQuestions/
+Content-Type: application/json
+Authorization: Bearer {{$dotenv token}}
+
 ###Show a Test by ID
-Get http://localhost:4500/test/63df80a15d8bea18c85a1be5
+Get http://localhost:4500/test/63df82370707a1889f726c2b
 Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}
