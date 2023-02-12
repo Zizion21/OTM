@@ -6,7 +6,6 @@ class TestContrller {
         try {
             const owner= req.user._id;
             const {title, introduction, publics} =req.body;
-            console.log(req.body);
             const findTest= await TestModel.findOne({title, owner});
             if(findTest) throw{status: 401, message: "This Test already exist. Please choose another title."}
             const url= urlGenerator();
@@ -29,7 +28,6 @@ class TestContrller {
             const test= await TestModel.findById(testID);
             if(!test) throw {status: 404, message: "Test does not exist."};
             const {questionText, answerOptions, correctAnswer}= req.body;
-            // console.log(testID);
             const addQuestionResult= await QuestionModel.create({questionText, answerOptions, correctAnswer, testID});
             const questionID= addQuestionResult._id;
             const updateTestResult= await TestModel.updateOne({_id: testID}, {$addToSet: {questions: questionID}})
@@ -96,8 +94,6 @@ class TestContrller {
             const testID= req.params.id;
             const test= await TestModel.findById(testID);
             if(!test) throw{status: 404, message: "Test not found."}
-            // console.log(""+ownerID);
-            // console.log(""+test.owner);
             if(test.public== false){
                 if(""+test.owner!== ""+ownerID) throw{status: 401, message: "This is a private test."}
             } return res.json(test);
@@ -116,11 +112,22 @@ class TestContrller {
             if(!question) throw{ status: 404, message: "not found"}
             return res.json(question)
 
-            
         } catch (error) {
             next(error)
         }
         
+    }
+
+    async showTestsQuestionsByTestId(req, res, next){
+        try {
+            const testID= req.params.id;
+            const questions= await QuestionModel.find({testID},{"__v":0, "_id": 0, "testID":0});
+            if(!questions) throw{status: 404, message: "Test not found."};
+            return res.json(questions)
+            
+        } catch (error) {
+            next(error)
+        }
     }
 
     async showTestResult(req, res, next){

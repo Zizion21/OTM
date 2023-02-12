@@ -4,7 +4,7 @@ Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}
 
 {
-    "title": "Question Schema test",
+    "title": "Test No.01",
     "introduction": "this is a test to check if the QS works",
     "publics": "false"
 }
@@ -14,15 +14,24 @@ Authorization: Bearer {{$dotenv token}}
 
 
 ###Add questions to tests
-Put http://localhost:4500/test/create/63e76b6559cb5b72068236dc/questions
+Put http://localhost:4500/test/create/63e85dcd9c10635380087f11/questions
 Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}
 
 {
-    "questionText": "Question no.9",
+    "questionText": "Question no.02",
     "answerOptions": ["a", "b", "c"],
     "correctAnswer": "d"
 }
+
+
+# -----------------------------------------------------------------------------------------------
+
+
+###Show a test's questions by testID
+Get http://localhost:4500/test/questions/63e85dcd9c10635380087f11
+Content-Type: application/json
+Authorization: Bearer {{$dotenv token}}
 
 
 # -----------------------------------------------------------------------------------------------
@@ -67,6 +76,6 @@ Authorization: Bearer {{$dotenv token}}
 
 
 ###Show a Test by ID
-Get http://localhost:4500/test/63e765e35c3af6d3427b2d94
+Get http://localhost:4500/test/63e85dcd9c10635380087f11
 Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}

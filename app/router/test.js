@@ -9,6 +9,7 @@ router.post("/edit/:id",checkLogin, TestContrller.editTestById);
 router.put("/create/:id/questions",checkLogin, TestContrller.addQuestionsToTests);
 router.delete("/delete/:id",checkLogin, TestContrller.deleteTestById);
 router.delete("/deleteQuestions/:id",checkLogin, TestContrller.deleteQuestionsById);
+router.get("/questions/:id", checkLogin, TestContrller.showTestsQuestionsByTestId);
 router.get("/:id", checkLogin, TestContrller.showATestById);
 
 module.exports={
