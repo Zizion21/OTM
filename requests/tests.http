@@ -4,14 +4,29 @@ Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}
 
 {
-    "title": "zizion's second test.",
-    "introduction": "this is the second exam that zizion is creating",
-    "questions": {
-        "questionText": "Question no.2",
-        "answerOptions": ["a", "b", "c"],
-        "correctAnswer": "d"
-    }
+    "title": "Question Schema test",
+    "introduction": "this is a test to check if the QS works",
+    "publics": "false"
 }
+
+
+# -----------------------------------------------------------------------------------------------
+
+
+###Add questions to tests
+Put http://localhost:4500/test/create/63e76b6559cb5b72068236dc/questions
+Content-Type: application/json
+Authorization: Bearer {{$dotenv token}}
+
+{
+    "questionText": "Question no.9",
+    "answerOptions": ["a", "b", "c"],
+    "correctAnswer": "d"
+}
+
+
+# -----------------------------------------------------------------------------------------------
+
 
 ###Edit a Test by ID
 Post http://localhost:4500/test/edit/63df80a15d8bea18c85a1be5
@@ -30,17 +45,28 @@ Authorization: Bearer {{$dotenv token}}
 
 }
 
+
+# -----------------------------------------------------------------------------------------------
+
+
 ###Delete a Test by ID
 Delete http://localhost:4500/test/delete/63df82370707a1889f726c2b
 Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}
 
+# -----------------------------------------------------------------------------------------------
+
+
 ###Delete a question by ID
-Delete http://localhost:4500/test/deletedeleteQuestions/
+Delete http://localhost:4500/test/deleteQuestions/63df80a15d8bea18c85a1be6
 Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}
 
+
+# -----------------------------------------------------------------------------------------------
+
+
 ###Show a Test by ID
-Get http://localhost:4500/test/63df82370707a1889f726c2b
+Get http://localhost:4500/test/63e765e35c3af6d3427b2d94
 Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}

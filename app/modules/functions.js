@@ -1,5 +1,7 @@
 const bcrypt= require("bcrypt");
 const jwt= require("jsonwebtoken");
+const nanoid= require("nanoid");
+
 
 function hashString(str){
     const salt= bcrypt.genSaltSync(10);
@@ -18,8 +20,14 @@ function verifyJwtToken(token){
 
 }
 
+function urlGenerator(){
+    const url= nanoid();
+    return url;
+}
+
 module.exports={
     hashString,
     tokenGenerator,
-    verifyJwtToken
+    verifyJwtToken,
+    urlGenerator
 }

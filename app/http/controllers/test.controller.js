@@ -1,18 +1,45 @@
-const { TestModel } = require("../../models/test");
+const { TestModel, QuestionModel } = require("../../models/test");
+const { urlGenerator } = require("../../modules/functions");
 
 class TestContrller {
     async createTest(req, res, next){
         try {
             const owner= req.user._id;
-            // console.log(owner);
-            const {title, introduction, questions}=req.body;
-            const test= await TestModel.create({title, introduction, questions, owner})
+            const {title, introduction, publics} =req.body;
+            console.log(req.body);
+            const findTest= await TestModel.findOne({title, owner});
+            if(findTest) throw{status: 401, message: "This Test already exist. Please choose another title."}
+            const url= urlGenerator();
+            const test= await TestModel.create({title, introduction, owner, link: url, public: publics})
             if(!test) throw {status: 201, success: false, message: "Failed to create the test. Please try again."}
             return res.json({
                 status:200,
                 success: true,
-                message: "The test created successfuly."
+                message: "The test created successfuly.",
+                URL: `http://localhost:${url}`
             })       
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async addQuestionsToTests(req, res, next){
+        try {
+            const testID= req.params.id;
+            const test= await TestModel.findById(testID);
+            if(!test) throw {status: 404, message: "Test does not exist."};
+            const {questionText, answerOptions, correctAnswer}= req.body;
+            // console.log(testID);
+            const addQuestionResult= await QuestionModel.create({questionText, answerOptions, correctAnswer, testID});
+            const questionID= addQuestionResult._id;
+            const updateTestResult= await TestModel.updateOne({_id: testID}, {$addToSet: {questions: questionID}})
+            if(!addQuestionResult && !updateTestResult) throw {status:400, message: "Update Failed"}
+            return res.json({
+                status:200,
+                success: true,
+                message: "Question added successfuly."
+            })
+            
         } catch (error) {
             next(error)
         }
@@ -81,6 +108,18 @@ class TestContrller {
     }
 
     async deleteQuestionsById(req, res, next){
+        try {
+            const owner= req.user._id;
+            const questionID= req.params.id;
+            console.log(req.body);
+            const question= await TestModel.findById(questionID);
+            if(!question) throw{ status: 404, message: "not found"}
+            return res.json(question)
+
+            
+        } catch (error) {
+            next(error)
+        }
         
     }
 
