@@ -1,12 +1,12 @@
 ###Create Tests
 Post http://localhost:4500/test/create
 Content-Type: application/json
-Authorization: Bearer {{$dotenv token}}
+Authorization: {{$dotenv token}}
 
 {
-    "title": "Test No.01",
-    "introduction": "this is a test to check if the QS works",
-    "publics": "false"
+    "title": "Test No.03",
+    "introduction": "this is Test number 3",
+    "publics": "true"
 }
 
 
@@ -16,7 +16,7 @@ Authorization: Bearer {{$dotenv token}}
 ###Add questions to tests
 Put http://localhost:4500/test/create/63e85dcd9c10635380087f11/questions
 Content-Type: application/json
-Authorization: Bearer {{$dotenv token}}
+Authorization: {{$dotenv token}}
 
 {
     "questionText": "Question no.02",
@@ -31,7 +31,7 @@ Authorization: Bearer {{$dotenv token}}
 ###Show a test's questions by testID
 Get http://localhost:4500/test/questions/63e85dcd9c10635380087f11
 Content-Type: application/json
-Authorization: Bearer {{$dotenv token}}
+Authorization: {{$dotenv token}}
 
 
 # -----------------------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ Authorization: Bearer {{$dotenv token}}
 ###Edit a Test by ID
 Post http://localhost:4500/test/edit/63df80a15d8bea18c85a1be5
 Content-Type: application/json
-Authorization: Bearer {{$dotenv token}}
+Authorization: {{$dotenv token}}
 
 {
     "title": "zizion's 3rd test",
@@ -61,7 +61,7 @@ Authorization: Bearer {{$dotenv token}}
 ###Delete a Test by ID
 Delete http://localhost:4500/test/delete/63df82370707a1889f726c2b
 Content-Type: application/json
-Authorization: Bearer {{$dotenv token}}
+Authorization: {{$dotenv token}}
 
 # -----------------------------------------------------------------------------------------------
 
@@ -78,4 +78,4 @@ Authorization: Bearer {{$dotenv token}}
 ###Show a Test by ID
 Get http://localhost:4500/test/63e85dcd9c10635380087f11
 Content-Type: application/json
-Authorization: Bearer {{$dotenv token}}
+Authorization: {{$dotenv token}}
