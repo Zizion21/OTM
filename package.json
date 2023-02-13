@@ -19,6 +19,8 @@
     "joi": "^17.7.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.3",
-    "nanoid": "^2.1.11"
+    "nanoid": "^2.1.11",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.0"
   }
 }

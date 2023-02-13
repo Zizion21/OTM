@@ -1,4 +1,4 @@
-###User Profile
+###User Profile - This section only works in swagger UI
 Get http://localhost:4500/user/profile
 Content-Type: application/json
 Authorization: Bearer {{$dotenv token}}

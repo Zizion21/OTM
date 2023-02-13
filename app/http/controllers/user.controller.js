@@ -56,6 +56,8 @@ class UserController{
     async userTests(req, res, next){
         try {
             const owner= req.user._id;
+            console.log(owner);
+            console.log(req.headers);
             const test= await TestModel.find({owner})
             if(!test) throw{status: 201, message: "You have no test yet."}
             return res.json(test)

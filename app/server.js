@@ -1,5 +1,6 @@
 const { AllRoutes } = require("./router/router");
-
+const swaggerUI= require("swagger-ui-express");
+const swaggerJsDoc= require("swagger-jsdoc");
 module.exports= class Application{
     #express= require ("express");
     #app= this.#express();
@@ -17,6 +18,21 @@ module.exports= class Application{
         this.#app.use(this.#express.static(path.join(__dirname, "..", "public")));
         this.#app.use(this.#express.json());
         this.#app.use(this.#express.urlencoded({extended: true}));
+        this.#app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerJsDoc({
+            swaggerDefinition:{
+                info:{
+                    title: "ZIZION OTM",
+                    version: "1.0.0",
+                    description: "WRITTEN BY ZIZION"
+                },
+                servers:[
+                    {
+                        url: "http://localhost:4500"
+                    }
+                ]
+            },
+            apis: [`${__dirname}/router/*.js`]
+        })))
     }
 
     createServer(PORT){
