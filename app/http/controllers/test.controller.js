@@ -1,4 +1,5 @@
 const { TestModel, QuestionModel } = require("../../models/test");
+const { UserModel } = require("../../models/user");
 const { urlGenerator } = require("../../modules/functions");
 
 class TestContrller {
@@ -10,7 +11,8 @@ class TestContrller {
             if(findTest) throw{status: 401, message: "This Test already exist. Please choose another title."}
             const url= urlGenerator();
             const test= await TestModel.create({title, introduction, owner, link: url, public: publics})
-            if(!test) throw {status: 201, success: false, message: "Failed to create the test. Please try again."}
+            const updateUser=await UserModel.updateOne({_id: owner}, {$addToSet: {tests: test._id}})
+            if(!test && !updateUser) throw {status: 201, success: false, message: "Failed to create the test. Please try again."}
             return res.json({
                 status:200,
                 success: true,
