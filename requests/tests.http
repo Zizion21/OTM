@@ -4,8 +4,8 @@ Content-Type: application/json
 Authorization: {{$dotenv token}}
 
 {
-    "title": "Test No.03",
-    "introduction": "this is Test number 3",
+    "title": "Test No.04",
+    "introduction": "this is Test number 4",
     "publics": "true"
 }
 
@@ -45,11 +45,6 @@ Authorization: {{$dotenv token}}
 {
     "title": "zizion's 3rd test",
     "introduction": "",
-    "questions": {
-        "questionText": "question1",
-        "answerOptions": ["a", "b", "c"],
-        "correctAnswer": "d"
-    },
     "public": "false"
 
 }
