@@ -19,7 +19,7 @@ Content-Type: application/json
 Authorization: {{$dotenv token}}
 
 {
-    "questionText": "Question no.02",
+    "questionText": "Question no.03",
     "answerOptions": ["a", "b", "c"],
     "correctAnswer": "d"
 }

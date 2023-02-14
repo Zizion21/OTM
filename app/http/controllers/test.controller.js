@@ -100,16 +100,11 @@ class TestContrller {
                 if(""+test.owner!== ""+ownerID) throw{status: 401, message: "This is a private test."}
             } 
             const questions= test.questions;
-            // console.log(req.headers);
-            // console.log(questions);
             questions.forEach(async(value)=>{
                 let result= await QuestionModel.findById(value);
                 if(!result) throw{status: 404, message: "not found"};
             })
-            return res.json(result)
-            // console.log(req.headers);
-
-            // return res.json(test);
+            return res.json(test);
             
         } catch (error) {
             next(error)
