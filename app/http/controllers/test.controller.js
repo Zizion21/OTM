@@ -100,11 +100,23 @@ class TestContrller {
                 if(""+test.owner!== ""+ownerID) throw{status: 401, message: "This is a private test."}
             } 
             const questions= test.questions;
-            questions.forEach(async(value)=>{
-                let result= await QuestionModel.findById(value);
-                if(!result) throw{status: 404, message: "not found"};
-            })
-            return res.json(test);
+            const questionsObject=[];
+            for(let x in questions){
+                let question= await QuestionModel.findById(questions[x]);
+                questionsObject.push(question)
+                // console.log(question);
+                // for(let i=0; i<questions.length; i++){
+                //     questionsObject[i]=question;
+                //     console.log(i);
+                // }
+            }
+            // console.log(questionsObject);
+            return res.json({
+                status:200,
+                success: true,
+                testInfo: test,
+                Questions: questionsObject
+            });
             
         } catch (error) {
             next(error)
@@ -116,9 +128,16 @@ class TestContrller {
             const owner= req.user._id;
             const questionID= req.params.id;
             console.log(req.body);
-            const question= await TestModel.findById(questionID);
+            const question= await QuestionModel.findById({_id: questionID});
             if(!question) throw{ status: 404, message: "not found"}
-            return res.json(question)
+            const deleteQuestionResult= await QuestionModel.deleteOne({_id: questionID});
+            const deleteQuestionIdInTest= await TestModel.deleteOne({questions:questionID})
+            if(deleteQuestionResult.deletedCount == 0 && deleteQuestionIdInTest.deletedCount == 0) throw{status: 500, message: "Failed to delete the question. Please try again."}
+            return res.json({
+                status: 200,
+                success:true,
+                message: "Question deleted successfuly."
+            })
 
         } catch (error) {
             next(error)
