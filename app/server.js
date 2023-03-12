@@ -12,7 +12,6 @@ module.exports= class Application{
         this.errorHandler();
 
     }
-
     configApplication(){
         const path= require("path");
         this.#app.use(this.#express.static(path.join(__dirname, "..", "public")));
@@ -34,16 +33,13 @@ module.exports= class Application{
             apis: [`${__dirname}/router/*.js`]
         })))
     }
-
     createServer(PORT){
         const http= require("http");
         const server= http.createServer(this.#app);
         server.listen(PORT, ()=>{
             console.log(`Server is running on http://localhost:${PORT}`);
         })
-
     }
-
     configDatabase(DB_URL){
         const mongoose= require("mongoose");
         mongoose.set('strictQuery',false);
@@ -52,7 +48,6 @@ module.exports= class Application{
             console.log("Connected to DB successfully.");
         })
     }
-
     errorHandler(){
         this.#app.use((req, res, next)=>{
             return res.status(404).json({
@@ -71,7 +66,6 @@ module.exports= class Application{
             })
         })
     }
-
     createRoutes(){
         this.#app.get("/", (req, res, next)=>{
             return res.json({

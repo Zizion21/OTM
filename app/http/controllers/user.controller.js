@@ -5,24 +5,14 @@ class UserController{
     showUserInfo(req, res, next){
         try {
             const user= req.user;
-            // const username= user.username;
             return res.status(200).json({
                 status: 200,
                 success: true,
                 userInfo: user
-                // {
-                //     "Username" : user.username,
-                //     "Email": user.email,
-                //     "Mobile Number": user.mobile,
-                //     "Role": user.role,
-                //     "tests": user.tests
-                // }
             })
-            
         } catch (error) {
             next(error)
         }
-
     }
     async editProfile(req, res, next){
         try {
@@ -45,29 +35,21 @@ class UserController{
                     message: "Profile successfuly updated."
                 })
             } throw {status: 400, message: "Update failed. Please try again."}
-
-            
         } catch (error) {
             next(error)
         }
-
     }
-
     async userTests(req, res, next){
         try {
             const owner= req.user._id;
             const test= await TestModel.find({owner})
             if(!test) throw{status: 201, message: "You have no test yet."}
             return res.json(test)
-            
         } catch (error) {
             next(error)
         }
-
     }
-
 }
-
 module.exports={
     UserController: new UserController()
 }

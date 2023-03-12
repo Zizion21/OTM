@@ -4,10 +4,8 @@ const { verifyJwtToken } = require("../../modules/functions");
 const checkLogin= async(req, res, next)=>{
     try {
         const authorization= req?.headers?.authorization;
-        // console.log(authorization);
         if(!authorization) throw {status: 401, message: "Please log into your account. (auth)"}
         let token= authorization;
-        // console.log(token);
         if(!token) throw {status: 401, message: "Please log into your account. (token)"};
         const result= verifyJwtToken(token);
         const {username}= result;

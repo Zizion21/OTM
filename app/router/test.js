@@ -45,7 +45,7 @@ router.get("/showResults",checkLogin, TestContrller.showTestResult);
  *              500:
  *                  description: Internal Server Error
  */
-router.post("/create",checkLogin, TestContrller.createTest);
+router.post("/create",checkLogin, TestContrller.createTest); //
 /**
  * @swagger
  *  /test/edit/{id}:
@@ -86,7 +86,7 @@ router.post("/create",checkLogin, TestContrller.createTest);
  *              500:
  *                  description: Internal Server Error
  */
-router.post("/edit/:id",checkLogin, TestContrller.editTestById);
+router.post("/edit/:id",checkLogin, TestContrller.editTestById); //
 /**
  * @swagger
  *  /test/create/{id}/questions:
@@ -127,7 +127,7 @@ router.post("/edit/:id",checkLogin, TestContrller.editTestById);
  *              500:
  *                  description: Internal Server Error
  */
-router.put("/create/:id/questions",checkLogin, TestContrller.addQuestionsToTests);
+router.put("/create/:id/questions",checkLogin, TestContrller.addQuestionsToTests); //
 /**
  * @swagger
  *  /test/delete/{id}:
@@ -153,7 +153,7 @@ router.put("/create/:id/questions",checkLogin, TestContrller.addQuestionsToTests
  *              500:
  *                  description: Internal Server Error
  */
-router.delete("/delete/:id",checkLogin, TestContrller.deleteTestById);
+router.delete("/delete/:id",checkLogin, TestContrller.deleteTestById); //
 /**
  * @swagger
  *  /test/deleteQuestions/{id}:
@@ -179,7 +179,7 @@ router.delete("/delete/:id",checkLogin, TestContrller.deleteTestById);
  *              500:
  *                  description: Internal Server Error
  */
-router.delete("/deleteQuestions/:id",checkLogin, TestContrller.deleteQuestionsById);
+router.delete("/deleteQuestions/:id",checkLogin, TestContrller.deleteQuestionsById); //
 /**
  * @swagger
  *  /test/questions/{id}:
@@ -201,7 +201,7 @@ router.delete("/deleteQuestions/:id",checkLogin, TestContrller.deleteQuestionsBy
  *              404: 
  *                  description: not found
  */
-router.get("/questions/:id", checkLogin, TestContrller.showTestsQuestionsByTestId);
+router.get("/questions/:id", checkLogin, TestContrller.showTestsQuestionsByTestId); //
 /**
  * @swagger
  *  /test/{id}:
